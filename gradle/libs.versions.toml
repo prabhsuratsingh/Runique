@@ -11,7 +11,7 @@ composeBom = "2024.12.01"
 appcompat = "1.7.0"
 material = "1.12.0"
 jetbrainsKotlinJvm = "1.9.0"
-androidTools = "31.2.2"
+androidTools = "31.7.3"
 core = "1.10.3"
 #noinspection RiskyLibrary
 playCore = "1.10.3"
@@ -129,3 +129,4 @@ mapsplatform-secrets-plugin = { id = "com.google.android.libraries.mapsplatform.
 
 runique-android-application = { id = "runique.android.application", version = "unspecified" }
 runique-android-application-compose = { id = "runique.android.application.compose", version = "unspecified" }
+runique-android-library = { id = "runique.android.library", version = "unspecified" }
