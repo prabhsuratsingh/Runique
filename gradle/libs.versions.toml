@@ -1,17 +1,17 @@
 [versions]
 agp = "8.6.1"
-kotlin = "1.9.0"
+kotlin = "1.9.22"
 coreKtx = "1.15.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
 lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.9.3"
-composeBom = "2024.12.01"
+activityCompose = "1.10.0"
+composeBom = "2025.01.00"
 appcompat = "1.7.0"
 material = "1.12.0"
 jetbrainsKotlinJvm = "1.9.0"
-androidTools = "31.7.3"
+androidTools = "31.8.0"
 core = "1.10.3"
 #noinspection RiskyLibrary
 playCore = "1.10.3"
@@ -45,9 +45,10 @@ annotation = "1.9.1"
 projectApplicationId = "com.example.runique"
 projectVersionName = "1.0"
 projectMinSdkVersion = "24"
-projectTargetSdkVersion = "34"
-projectCompileSdkVersion = "34"
+projectTargetSdkVersion = "35"
+projectCompileSdkVersion = "35"
 projectVersionCode = "1"
+monitor = "1.7.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -115,6 +116,7 @@ android-tools-common = { group = "com.android.tools", name = "common", version.r
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
+androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "monitor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
