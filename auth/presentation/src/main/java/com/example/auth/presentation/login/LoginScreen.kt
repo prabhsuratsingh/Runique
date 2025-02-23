@@ -2,9 +2,11 @@ package com.example.auth.presentation.login
 
 import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
@@ -91,58 +94,60 @@ private fun LoginScreen(
     GradientBackground {
         Column(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
                 .fillMaxSize()
                 .padding(horizontal = 16.dp, vertical = 32.dp)
-                .padding(top = 16.dp)
+                .padding(top = 16.dp),
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = stringResource(id = R.string.hi_there),
-                fontWeight = FontWeight.SemiBold,
-                style = MaterialTheme.typography.headlineMedium
-            )
+            Column {
+                Text(
+                    text = stringResource(id = R.string.hi_there),
+                    fontWeight = FontWeight.SemiBold,
+                    style = MaterialTheme.typography.headlineMedium
+                )
 
-            Text(
-                text = stringResource(id = R.string.welcome_text),
-                fontSize = 12.sp,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
-            )
+                Text(
+                    text = stringResource(id = R.string.welcome_text),
+                    fontSize = 12.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
 
-            Spacer(modifier = Modifier.height(48.dp))
+                Spacer(modifier = Modifier.height(48.dp))
 
-            RuniqueTextField(
-                state = state.email,
-                startIcon = EmailIcon,
-                endIcon = null,
-                keyboardType = KeyboardType.Email,
-                hint = stringResource(R.string.example_email),
-                title = stringResource(R.string.email),
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            RuniquePasswordTextField(
-                state = state.password,
-                isPasswordVisible = state.isPasswordVisible,
-                onTogglePasswordVisibility = {
-                    onAction(LoginAction.OnTogglePasswordVisibility)
-                },
-                hint = stringResource(R.string.password),
-                title = stringResource(R.string.password),
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
+                RuniqueTextField(
+                    state = state.email,
+                    startIcon = EmailIcon,
+                    endIcon = null,
+                    keyboardType = KeyboardType.Email,
+                    hint = stringResource(R.string.example_email),
+                    title = stringResource(R.string.email),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                RuniquePasswordTextField(
+                    state = state.password,
+                    isPasswordVisible = state.isPasswordVisible,
+                    onTogglePasswordVisibility = {
+                        onAction(LoginAction.OnTogglePasswordVisibility)
+                    },
+                    hint = stringResource(R.string.password),
+                    title = stringResource(R.string.password),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
 
-            Spacer(modifier = Modifier.height(32.dp))
-            RuniqueActionButton(
-                text = stringResource(R.string.login),
-                isLoading = state.isLoggingIn,
-                enabled = state.canLogin && !state.isLoggingIn,
-                modifier = Modifier.fillMaxWidth(),
-                onClick = {
-                    onAction(LoginAction.OnLoginClick)
-                }
-            )
+                Spacer(modifier = Modifier.height(32.dp))
+                RuniqueActionButton(
+                    text = stringResource(R.string.login),
+                    isLoading = state.isLoggingIn,
+                    enabled = state.canLogin && !state.isLoggingIn,
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        onAction(LoginAction.OnLoginClick)
+                    }
+                )
+            }
 
             val annotatedString = buildAnnotatedString {
                 withStyle(
@@ -168,11 +173,11 @@ private fun LoginScreen(
                 }
             }
 
+
             Box(
                 modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .weight(1f),
-                contentAlignment = Alignment.BottomCenter
+                    .fillMaxWidth(),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
                     modifier = Modifier
