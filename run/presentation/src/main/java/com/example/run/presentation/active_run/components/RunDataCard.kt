@@ -40,7 +40,7 @@ fun RunDataCard(
     Column(
         modifier = modifier
             .clip(RoundedCornerShape(15.dp))
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.surface)
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
