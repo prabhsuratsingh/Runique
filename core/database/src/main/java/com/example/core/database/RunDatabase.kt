@@ -1,6 +1,7 @@
 package com.example.core.database
 
 import androidx.room.Database
+import androidx.room.RoomDatabase
 import com.example.core.database.dao.RunDao
 import com.example.core.database.entity.RunEntity
 
@@ -8,6 +9,6 @@ import com.example.core.database.entity.RunEntity
     entities = [RunEntity::class],
     version = 1
 )
-abstract class RunDatabase {
+abstract class RunDatabase : RoomDatabase() {
     abstract val runDao: RunDao
 }

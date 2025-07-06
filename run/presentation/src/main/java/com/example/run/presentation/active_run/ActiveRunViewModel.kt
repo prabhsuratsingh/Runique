@@ -8,6 +8,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.domain.location.Location
 import com.example.core.domain.run.Run
+import com.example.core.domain.run.RunRepository
+import com.example.core.domain.util.Result
+import com.example.core.presentation.ui.asUiText
 import com.example.run.domain.LocationDataCalculator
 import com.example.run.domain.RunningTracker
 import com.example.run.presentation.active_run.service.ActiveRunService
@@ -25,7 +28,8 @@ import java.time.ZonedDateTime
 import kotlin.math.max
 
 class ActiveRunViewModel(
-    private val runningTracker: RunningTracker
+    private val runningTracker: RunningTracker,
+    private val runRepository: RunRepository
 ): ViewModel() {
     var state by mutableStateOf(ActiveRunState(
         shouldTrack = ActiveRunService.isServiceActive && runningTracker.isTracking.value,
@@ -145,6 +149,16 @@ class ActiveRunViewModel(
             )
 
             runningTracker.finishRun()
+
+            when(val result = runRepository.upsertRun(run, mapPictureBytes)) {
+                is Result.Error -> {
+                    eventChannel.send(ActiveRunEvent.Error(result.error.asUiText()))
+                }
+                is Result.Success -> {
+                    eventChannel.send(ActiveRunEvent.RunSaved)
+                }
+            }
+
             state = state.copy(isSavingRun = false)
         }
     }
