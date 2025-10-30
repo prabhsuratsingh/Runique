@@ -1,11 +1,9 @@
 package com.example.core.database.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Query
 import androidx.room.Upsert
 import com.example.core.database.entity.DeletedRunSyncEntity
-import com.example.core.database.entity.RunEntity
 import com.example.core.database.entity.RunPendingSyncEntity
 
 @Dao

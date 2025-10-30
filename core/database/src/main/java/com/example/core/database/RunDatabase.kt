@@ -6,11 +6,12 @@ import com.example.core.database.dao.RunDao
 import com.example.core.database.dao.RunPendingSyncDao
 import com.example.core.database.entity.DeletedRunSyncEntity
 import com.example.core.database.entity.RunEntity
+import com.example.core.database.entity.RunPendingSyncEntity
 
 @Database(
     entities = [
         RunEntity::class,
-        RunPendingSyncDao::class,
+        RunPendingSyncEntity::class,
         DeletedRunSyncEntity::class
                ],
     version = 1
