@@ -79,7 +79,7 @@ private fun AnalyticsDashboardScreen(
                 ) {
                     AnalyticsCard(
                         title = stringResource(R.string.total_distance_run),
-                        value = state.totalDistance,
+                        value = state.totalDistanceRun,
                         modifier = Modifier.weight(1f)
                     )
                     Spacer(modifier = Modifier.width(16.dp))

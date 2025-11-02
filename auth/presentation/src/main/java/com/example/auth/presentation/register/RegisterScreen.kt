@@ -33,6 +33,7 @@ import androidx.lifecycle.Observer
 import com.example.auth.domain.PasswordValidationState
 import com.example.auth.domain.UserDataValidator
 import com.example.auth.presentation.R
+import com.example.auth.presentation.login.LoginAction
 import com.example.core.presentation.designsystem.CheckIcon
 import com.example.core.presentation.designsystem.CrossIcon
 import com.example.core.presentation.designsystem.EmailIcon
@@ -81,7 +82,13 @@ fun RegisterScreenRoot(
 
     RegisterScreenRootScreen(
         state = viewModel.state,
-        onAction = viewModel::onAction
+        onAction = { action ->
+            when(action) {
+                RegisterAction.OnLoginClick -> onSignInClick()
+                else -> Unit
+            }
+            viewModel.onAction(action)
+        }
     )
 }
 
