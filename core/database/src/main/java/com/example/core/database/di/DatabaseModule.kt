@@ -1,7 +1,6 @@
 package com.example.core.database.di
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.core.database.RoomLocalRunDataSource
 import com.example.core.database.RunDatabase
 import com.example.core.domain.run.LocalRunDataSource
@@ -14,13 +13,14 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(
             androidApplication(),
-            RoomDatabase::class.java,
+            RunDatabase::class.java,
             "run.db"
         ).build()
     }
 
     single { get<RunDatabase>().runDao }
     single { get<RunDatabase>().runPendingSyncDao }
+//    single { get<RunDatabase>().analyticsDao }
 
     singleOf(::RoomLocalRunDataSource).bind<LocalRunDataSource>()
 }
