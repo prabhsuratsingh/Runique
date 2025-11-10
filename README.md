@@ -1,4 +1,4 @@
-"""# Runique - Android Running App
+# Runique - Android Running App
 
 Runique is a modern, offline-first, multi-module Android application designed for tracking running activities. This project showcases modern Android development practices, emphasizing a clean, scalable, and maintainable architecture.
 
